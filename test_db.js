@@ -2,7 +2,7 @@
 import mongoose from 'mongoose';
 
 // Hardcoded URI from .env.development.local to avoid dotenv issues in isolation
-const DB_URI = "mongodb+srv://ayushratna2012_db_user:newdatabase@cluster0.mwrtmfl.mongodb.net/?appName=Cluster0";
+const DB_URI = "DB_URL";
 
 const testConnection = async () => {
     console.log("Attempting to connect to MongoDB...");
