@@ -86,12 +86,23 @@ Paywatch is a robust SaaS-ready platform designed for tracking user subscription
     QSTASH_URL=<your_qstash_url>
     QSTASH_TOKEN=<your_qstash_token>
 
+    # Redis (Local or Cloud)
+    REDIS_HOST="127.0.0.1"
+    REDIS_PORT=6379
+    # REDIS_PASSWORD=<optional>
+
     # Email Service (Nodemailer)
     Email_user=<your_email_address>
     Email_pass=<your_email_app_password>
     ```
 
-4.  **Start the Backend**
+4.  **Start Background Services (Redis)**
+    Since the application uses Redis for rate limiting, you need to have it running. The easiest way is using Docker:
+    ```bash
+    docker-compose up -d
+    ```
+
+5.  **Start the Backend**
     ```bash
     npm run dev
     ```
