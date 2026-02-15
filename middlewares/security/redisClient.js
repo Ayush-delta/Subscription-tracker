@@ -5,6 +5,8 @@ const redis = new Redis({
   port: process.env.REDIS_PORT || 6379,
   username: process.env.REDIS_USERNAME,
   password: process.env.REDIS_PASSWORD,
+  // Enable TLS if connecting to Upstash or other cloud providers requiring it
+  tls: process.env.REDIS_HOST && process.env.REDIS_HOST.includes("upstash") ? {} : undefined,
 });
 
 redis.on("connect", () => console.log("Redis connected"));

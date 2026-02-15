@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'User password is required'],
         minLength: 6,
+    },
+    refreshToken: {
+        type: String,
+        select: false // Avoid returning it in queries by default
     }
 }, { timestamps: true });
 

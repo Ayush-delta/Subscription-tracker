@@ -128,27 +128,34 @@ Paywatch is a robust SaaS-ready platform designed for tracking user subscription
 ---
 
 ## 📂 Project Structure
+This project follows a **Feature-Based Architecture**, ensuring scalability and modularity.
 
 ```
 Paywatch/
-├── config/                 # Environment & 3rd party configs (Upstash, etc.)
-├── controllers/            # Logic for Auth, Users, Subscriptions, Workflows
-├── middlewares/            # Custom Middleware
-│   ├── security/           # WAF, Bot Detector, Rate Limiter, IP Ban
-│   ├── auth.middleware.js  # JWT Verification
-│   └── error.middleware.js # Global Error Handler
-├── models/                 # Mongoose Schemas (User, Subscription, Activity, SecurityLog)
-├── routes/                 # API Routes (Auth, Admin, Security, Workflows)
-├── utils/                  # Helper functions (Email templates, etc.)
+├── src/
+│   ├── auth/               # Authentication Feature
+│   │   ├── auth.controller.js
+│   │   ├── auth.routes.js
+│   │   ├── auth.service.js
+│   │   └── auth.schema.js
+│   ├── subscription/       # Subscription Feature
+│   │   ├── subscription.controller.js
+│   │   ├── subscription.routes.js
+│   │   └── subscription.model.js
+│   ├── security/           # Security Feature
+│   │   ├── security.middleware.js
+│   │   ├── waf.js
+│   │   └── rateLimiter.js
+│   ├── analytics/          # Analytics Feature
+│   │   └── analytics.controller.js
+│   ├── workflows/          # Automation Workflows
+│   │   └── reminder.workflow.js
+│   ├── shared/             # Shared Utilities
+│   │   ├── database/
+│   │   ├── utils/
+│   │   └── middleware/     # Global Middleware (Error handling, etc.)
+│   └── app.js              # Express Entry Point
 ├── security-dashboard/     # React Admin Dashboard
-│   ├── src/
-│   │   ├── api/            # API Integration Layer
-│   │   ├── components/     # Reusable UI Components & Charts
-│   │   ├── layout/         # Sidebar & Main Layout
-│   │   ├── pages/          # Overview, Users, Subscriptions, Security Pages
-│   │   └── assets/         # Static Assets & Logos
-│   └── ...
-├── app.js                  # Express App Entry Point
 └── package.json            # Backend Dependencies
 ```
 

@@ -20,11 +20,26 @@ Render offers a free tier for Web Services that is perfect for Node.js APIs.
     Add all variables from your `.env.development.local` file, but use production values:
     *   `DB_URI`: Your MongoDB Connection String
     *   `JWT_SECRET`: A strong secret key
-    *   `QSTASH_URL`: From Upstash
-    *   `QSTASH_TOKEN`: From Upstash
+    *   `QSTASH_URL`: From Upstash (Workflow)
+    *   `QSTASH_TOKEN`: From Upstash (Workflow)
     *   `Email_user`: Your email
     *   `Email_pass`: Your app password
     *   `NODE_ENV`: `production`
+    *   **Redis Configuration** (See Step 1.5 below):
+        *   `REDIS_HOST`: Your Upstash Redis Endpoint (e.g., `us1-choice-sloth-35212.upstash.io`)
+        *   `REDIS_PORT`: `6379` (or the port provided by Upstash)
+        *   `REDIS_PASSWORD`: Your Upstash Redis Password
+
+### 1.5 Set up Redis (Upstash)
+Since Render doesn't provide a free Redis instance, use **Upstash Redis** (same provider as your Workflows).
+
+1.  Go to [console.upstash.com](https://console.upstash.com).
+2.  Click **"Create Database"** under Redis.
+3.  Give it a name (e.g., `paywatch-redis`).
+4.  Select a region close to your Render region (e.g., `US-East-1`).
+5.  Click **"Create"**.
+6.  Scroll down to "Connect to your database" -> "Node.js (ioredis)".
+7.  Copy the `host`, `port`, and `password` and add them to your Render Environment Variables (Step 1.6).
 
 7.  Click **"Create Web Service"**.
 8.  **Copy the Service URL** (e.g., `https://paywatch-api.onrender.com`). You will need this for the frontend.
